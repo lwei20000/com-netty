@@ -32,7 +32,6 @@ public class Server {
             while (selectedKeys.hasNext()) {
                 // 8、获取“准备就绪”的事件
                 SelectionKey selectedKey = selectedKeys.next();
-
                 // 9、判断key是具体的什么事件
                 if (selectedKey.isAcceptable()) {
 
