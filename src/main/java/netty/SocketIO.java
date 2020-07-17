@@ -8,11 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * 跑本服务
- * 在xshell工具下输入：nc 127.0.0.1 9090
- * 在windows下安装nc: https://eternallybored.org/misc/netcat/
- *                   将nc.exe 复制到C:\Windows\System32的文件夹下
- *
  * 阻塞：
  *   server.accept()阻塞一
  *   reader.readLine() 阻塞二
