@@ -19,17 +19,28 @@ public class T03_WeakReference {
         System.gc();
         System.out.println(m.get());
 
-        // 1、新建tl
-        // 2、tl包含一个静态内部类ThreadLocalMap
-        // 3、ThreadLocalMap包含一个静态内部类Entry（Entry是一个弱引用：static class Entry extends WeakReference<ThreadLocal<?>>）
+        // 1.1、新建tl
+        // 1.2、tl包含一个静态内部类ThreadLocalMap
+        // 1.3、ThreadLocalMap包含一个静态内部类Entry（Entry是一个弱引用：static class Entry extends WeakReference<ThreadLocal<?>>）
         ThreadLocal<M> tl = new ThreadLocal<M>();
-        // set里面吧对象放进ThreadLocalMap（如果ThreadLocalMap不存在就createMap()创建）
+
+        // 2.1、每一个thread都包含一个threadLocals（ThreadLocal.ThreadLocalMap ）
+        // 2.2、set里面吧对象放进ThreadLocalMap（如果ThreadLocalMap不存在就createMap()创建）
         tl.set(new M());
         System.out.println(tl.get());
-        //tl.remove();
-        tl = null;
-        System.gc();
-        Thread.sleep(3000);
-        System.out.println(tl.get());
+        tl.remove();
+
+        Thread.currentThread();
+
+    }
+
+    private static void method01() {
+        ThreadLocal<M> tl01 = new ThreadLocal<M>();
+        tl01.set(new M());
+    }
+
+    private static void method02() {
+        ThreadLocal<M> tl02 = new ThreadLocal<M>();
+        tl02.set(new M());
     }
 }
